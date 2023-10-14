@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { Pokemon } from '@/interfaces/pokemon.interface';
 import PokemonCard from '../PokemonCard';
+import styles from './pokemonList.module.css'
 
 interface IPokemonListProps {
     pokemons: Pokemon[]
@@ -9,9 +10,12 @@ interface IPokemonListProps {
 
 const PokemonList: FC<IPokemonListProps> = ({ pokemons }) => {
     return (
-        <ul style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+        <ul className={styles.pokemonList}>
             {pokemons.map((pokemon =>
-                <PokemonCard pokemon={pokemon} />
+                <PokemonCard
+                    key={pokemon?.id}
+                    pokemon={pokemon}
+                />
             ))}
         </ul>
     )

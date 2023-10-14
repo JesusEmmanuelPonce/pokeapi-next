@@ -1,0 +1,23 @@
+.pokemonCard {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    background-color: #151515;
+    border-radius: .5rem;
+    padding: 2rem;
+}
+
+.pokemonCard .pokemonCard__name {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.pokemonCard img {
+    transition: all .3s;
+}
+
+.pokemonCard img:hover {
+    transform: scale(1.3);
+}
