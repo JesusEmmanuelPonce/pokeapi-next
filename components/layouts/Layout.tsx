@@ -1,6 +1,8 @@
 import { FC, ReactNode } from 'react';
 import Head from 'next/head';
+
 import Navbar from '../ui/Navbar';
+import styles from './layout.module.css'
 
 interface ILayoutProps {
     children: ReactNode;
@@ -19,9 +21,7 @@ const Layout: FC<ILayoutProps> = ({ children, title }) => {
 
             <Navbar />
 
-            <main style={{
-                padding: '0 20px'
-            }}>
+            <main className={styles.layout}>
                 {children}
             </main>
         </>
