@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 
-import Layout from './components/layouts'
+import Layout from '../components/layouts'
 import pokeApi from '@/api/pokeApi';
-import PokemonList from './components/PokemonList';
+import PokemonList from '../components/PokemonList';
 import { IPokemonRes, Pokemon } from '@/interfaces/pokemon.interface';
 
 interface IHomeProps {

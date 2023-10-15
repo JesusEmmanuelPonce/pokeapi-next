@@ -1,0 +1,68 @@
+.wrapper {
+    display: flex;
+    gap: 2rem;
+}
+
+.wrapper h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.wrapper h3 {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.wrapper__pokemon {
+    background-color: #1c1c1c;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+}
+
+.wrapper__pokemon h3 {
+    margin-top: 1rem;
+}
+
+.wrapper__information {
+    background-color: #1c1c1c;
+    border-radius: .5rem;
+    flex: 1;
+    padding: 1rem 2rem;
+}
+
+.wrapper__information_listTypes {
+    display: flex;
+    gap: .5rem;
+}
+
+.wrapper__information_listTypes li {
+    text-transform: capitalize;
+}
+
+.wrapper__information_stats {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+
+    margin-bottom: 2rem;
+}
+
+.wrapper__information_stats li {
+    text-transform: capitalize;
+}
+
+.wrapper__information_sprites {
+    display: flex;
+    gap: 1rem;
+}
+
+.wrapper__information_sprites li figure {
+    display: flex;
+}
+
+.wrapper__information_sprites li p {
+    font-size: .9rem;
+    text-align: center;
+}
