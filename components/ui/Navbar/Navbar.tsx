@@ -1,15 +1,12 @@
+import Link from 'next/link';
+import styles from './navbar.module.css';
+
 const Navbar = () => {
 
     return (
-        <nav style={{
-            display: 'flex',
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'start',
-            padding: '10px 20px',
-        }}>
-            Welcome to Poke-Api
+        <nav className={styles.navbar}>
+            <Link href="/">Poke-Api</Link>
+            <Link href="/favorites">Favoritos</Link>
         </nav>
     )
 }
