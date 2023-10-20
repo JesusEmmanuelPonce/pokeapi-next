@@ -1,10 +1,11 @@
 import Image from 'next/image';
-import { Progress } from "@nextui-org/react";
+import { Button, Progress } from "@nextui-org/react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 
 import styles from './pokemon.module.css';
 import Layout from "@/components/layouts/Layout";
 import pokeApi from "@/api/pokeApi";
+import favorites from '@/utils/favorites';
 import { PokemonDeatilRes } from "@/interfaces/pokemonDetail.interface";
 
 interface IPokemonByIdProps {
@@ -12,6 +13,10 @@ interface IPokemonByIdProps {
 }
 
 const pokemonById: NextPage<IPokemonByIdProps> = ({ pokemon }) => {
+
+    const onFavorite = () => {
+        favorites(pokemon?.id)
+    }
 
     return (
         <Layout>
@@ -40,6 +45,16 @@ const pokemonById: NextPage<IPokemonByIdProps> = ({ pokemon }) => {
                 </article>
 
                 <article className={styles.wrapper__information}>
+
+                    <section className={styles.wrapper__information_btnFavorites}>
+                        <Button
+                            color="success"
+                            variant="bordered"
+                            onClick={onFavorite}
+                        >
+                            Agregar a favoritos
+                        </Button>
+                    </section>
 
                     <h3>Stats:</h3>
                     <ul className={styles.wrapper__information_stats}>
