@@ -41,6 +41,11 @@
     text-transform: capitalize;
 }
 
+.wrapper__information_btnFavorites {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .wrapper__information_stats {
     display: flex;
     flex-direction: column;
