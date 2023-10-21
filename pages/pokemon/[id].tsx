@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import { Button, Progress } from "@nextui-org/react";
+import { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 
 import styles from './pokemon.module.css';
 import Layout from "@/components/layouts/Layout";
 import pokeApi from "@/api/pokeApi";
 import favorites from '@/utils/favorites';
+import existInFavorites from '@/utils/existInFavorites';
 import { PokemonDeatilRes } from "@/interfaces/pokemonDetail.interface";
 
 interface IPokemonByIdProps {
@@ -14,14 +16,21 @@ interface IPokemonByIdProps {
 
 const pokemonById: NextPage<IPokemonByIdProps> = ({ pokemon }) => {
 
+    const [isInFavorites, setIsInFavorites] = useState(false);
+
+    useEffect(() => {
+        setIsInFavorites(existInFavorites(pokemon?.id))
+    }, [])
+
     const onFavorite = () => {
         favorites(pokemon?.id)
+        setIsInFavorites(!isInFavorites)
     }
 
     return (
         <Layout>
             <section className={styles.wrapper}>
-                <article className={styles.wrapper__pokemon}>
+                <section className={styles.wrapper__pokemon}>
                     <h2>{pokemon?.name}</h2>
                     <Image
                         src={pokemon?.sprites?.other?.dream_world?.front_default || '/no-image.png'}
@@ -42,17 +51,16 @@ const pokemonById: NextPage<IPokemonByIdProps> = ({ pokemon }) => {
                             <li key={index}>{type?.type?.name}</li>
                         ))}
                     </ul>
-                </article>
+                </section>
 
-                <article className={styles.wrapper__information}>
-
+                <section className={styles.wrapper__information}>
                     <section className={styles.wrapper__information_btnFavorites}>
                         <Button
                             color="success"
                             variant="bordered"
                             onClick={onFavorite}
                         >
-                            Agregar a favoritos
+                            {!isInFavorites ? 'Agregar a favoritos' : 'Quitar de favoritos'}
                         </Button>
                     </section>
 
@@ -103,7 +111,7 @@ const pokemonById: NextPage<IPokemonByIdProps> = ({ pokemon }) => {
                             <p>Shiny</p>
                         </li>
                     </ul>
-                </article>
+                </section>
             </section>
         </Layout>
     )
