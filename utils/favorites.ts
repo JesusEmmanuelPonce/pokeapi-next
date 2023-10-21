@@ -2,7 +2,7 @@ const favorites = (id: number) => {
     let favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     if (favorites.includes(id)) {
-        favorites.filter(pokeId => pokeId !== id);
+        favorites = favorites.filter(pokeId => pokeId !== id);
     } else {
         favorites.push(id);
     }
