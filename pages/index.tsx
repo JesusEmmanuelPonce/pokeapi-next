@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 
-import Layout from '../components/layouts'
+import Layout from '@/components/layouts'
 import pokeApi from '@/api/pokeApi';
-import PokemonList from '../components/PokemonList';
+import PokemonList from '@/components/PokemonList';
 import { IPokemonRes, Pokemon } from '@/interfaces/pokemon.interface';
 
 interface IHomeProps {
@@ -14,7 +14,9 @@ const Home: NextPage<IHomeProps> = ({ pokemons }) => {
 
   return (
     <Layout>
-      <PokemonList pokemons={pokemons} />
+      <section style={{ padding: "6rem 2rem 2rem" }}>
+        <PokemonList pokemons={pokemons} />
+      </section>
     </Layout >
   )
 }
