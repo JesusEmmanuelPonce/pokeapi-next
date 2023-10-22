@@ -28,7 +28,7 @@ const pokemonById: NextPage<IPokemonByIdProps> = ({ pokemon }) => {
     }
 
     return (
-        <Layout>
+        <Layout title={`Detail - ${pokemon.name}`}>
             <section className={styles.wrapper}>
                 <section className={styles.wrapper__pokemon}>
                     <h2>{pokemon?.name}</h2>

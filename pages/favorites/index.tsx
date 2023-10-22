@@ -4,7 +4,7 @@ import NoFavorites from "@/components/NoFavorites";
 
 const Favorites = () => {
     return (
-        <Layout>
+        <Layout title="Favorites">
             <section className={styles.favorites}>
                 <NoFavorites />
             </section>
