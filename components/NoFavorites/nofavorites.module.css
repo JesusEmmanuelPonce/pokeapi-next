@@ -1,0 +1,12 @@
+.noFavorites {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    min-height: 100vh;
+}
+
+.noFavorites h1 {
+    font-size: 1.6rem;
+    font-weight: 500;
+}

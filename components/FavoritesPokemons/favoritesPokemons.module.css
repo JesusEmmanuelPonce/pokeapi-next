@@ -1,0 +1,12 @@
+.favoritesPokemons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.favoritesPokemons li {
+    background-color: #151515;
+    border-radius: .5rem;
+    padding: 2rem;
+}
