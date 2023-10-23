@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
+import { useRouter } from "next/router";
 
 import styles from "./favoritesPokemons.module.css";
 
@@ -8,6 +9,13 @@ interface IFavoritesPokemonsProps {
 }
 
 const FavoritesPokemons: FC<IFavoritesPokemonsProps> = ({ ids }) => {
+
+    const router = useRouter();
+
+    const goToDetail = (id: number) => {
+        router.push(`/pokemon/${id}`)
+    }
+
     return (
         <ul className={styles.favoritesPokemons}>
             {ids.map(id => (
@@ -17,6 +25,7 @@ const FavoritesPokemons: FC<IFavoritesPokemonsProps> = ({ ids }) => {
                         height={100}
                         width={100}
                         alt="pokemon"
+                        onClick={() => goToDetail(id)}
                     />
                 </li>
             ))}
