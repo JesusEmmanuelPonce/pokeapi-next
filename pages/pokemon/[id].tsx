@@ -28,7 +28,7 @@ const pokemonById: NextPage<IPokemonByIdProps> = ({ pokemon }) => {
     }
 
     return (
-        <Layout title={`Detail - ${pokemon.name}`}>
+        <Layout title={`Detail - ${pokemon?.name}`}>
             <section className={styles.wrapper}>
                 <section className={styles.wrapper__pokemon}>
                     <h2>{pokemon?.name}</h2>
@@ -132,9 +132,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const { data } = await pokeApi.get<PokemonDeatilRes>(`/pokemon/${id}`)
 
+    const pokemon = {
+        id: data?.id,
+        name: data?.name,
+        order: data?.order,
+        types: data?.types,
+        stats: data?.stats,
+        weight: data?.weight,
+        sprites: data?.sprites,
+    }
+
     return {
         props: {
-            pokemon: data
+            pokemon
         }
     }
 }
