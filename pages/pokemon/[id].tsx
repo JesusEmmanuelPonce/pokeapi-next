@@ -9,6 +9,7 @@ import pokeApi from "@/api/pokeApi";
 import favorites from '@/utils/favorites';
 import existInFavorites from '@/utils/existInFavorites';
 import { PokemonDeatilRes } from "@/interfaces/pokemonDetail.interface";
+import getPokemons from '@/api/getPokemons';
 
 interface IPokemonByIdProps {
     pokemon: PokemonDeatilRes;
@@ -122,7 +123,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
     return {
         paths: totalPokemons.map(id => ({ params: { id } })),
-        fallback: false
+        fallback: 'blocking'
     }
 }
 
@@ -130,22 +131,22 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const { id } = params as { id: string };
 
-    const { data } = await pokeApi.get<PokemonDeatilRes>(`/pokemon/${id}`)
+    const pokemon = await getPokemons(id);
 
-    const pokemon = {
-        id: data?.id,
-        name: data?.name,
-        order: data?.order,
-        types: data?.types,
-        stats: data?.stats,
-        weight: data?.weight,
-        sprites: data?.sprites,
+    if (!pokemon) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
     }
 
     return {
         props: {
             pokemon
-        }
+        },
+        revalidate: 86400
     }
 }
 
